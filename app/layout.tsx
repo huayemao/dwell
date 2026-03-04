@@ -1,6 +1,6 @@
-import type {Metadata, Viewport} from 'next';
+import type {Metadata} from 'next';
 import { Inter } from 'next/font/google';
-import '../globals.css'; // Global styles
+import './globals.css'; // Global styles
 import { GlobalAudio } from '@/components/GlobalAudio';
 import { Visuals } from '@/components/Visuals';
 import { Navigation } from '@/components/Navigation';
@@ -9,10 +9,6 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
 });
-
-export const viewport: Viewport = {
-  themeColor: '#000000',
-};
 
 export const metadata: Metadata = {
   title: 'Dwell-at - Seamless Audio-Visual Soundscapes',
@@ -35,20 +31,13 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
+export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang={lang} className={inter.variable}>
+    <html lang="en" className={inter.variable}>
       <body suppressHydrationWarning className="font-sans bg-black text-white overflow-hidden">
         <GlobalAudio />
         <Visuals />
-        <Navigation lang={lang as any} />
+        <Navigation />
         {children}
       </body>
     </html>

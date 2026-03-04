@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${process.env.APP_URL || 'https://zenith-soundscapes.com'}/sitemap.xml`,
+    sitemap: `${process.env.APP_URL || 'https://Dwell-at-soundscapes.com'}/sitemap.xml`,
   };
 }
