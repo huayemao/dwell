@@ -69,7 +69,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
   const Icon = icons[previewScene.id] || SlidersHorizontal;
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm text-white flex flex-col items-center justify-center font-sans overflow-y-auto z-40">
+    <div className="fixed inset-0 bg-transparent text-white flex flex-col items-center justify-center font-sans overflow-y-auto z-40">
       <article className="sr-only">
         <h2>{t('aboutTitle')}</h2>
         <p>{t('aboutText')}</p>
