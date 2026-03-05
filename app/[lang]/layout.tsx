@@ -17,19 +17,19 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Dwell-at - Seamless Audio-Visual Soundscapes',
+  title: 'Dwell - Seamless Audio-Visual Soundscapes',
   description: 'Experience high-end, minimalist audio-visual scenes. Relax with looping white noise, fireplace, rain, ocean, and forest soundscapes for focus and meditation.',
   keywords: ['white noise', 'relax', 'soundscape', 'fireplace', 'rain', 'ocean', 'forest', 'focus', 'meditation', 'sleep', 'ambient sounds'],
-  authors: [{ name: 'Dwell-at' }],
+  authors: [{ name: 'Dwell' }],
   openGraph: {
-    title: 'Dwell-at - Audio-Visual Soundscapes',
+    title: 'Dwell - Audio-Visual Soundscapes',
     description: 'Immerse yourself in seamless audio-visual soundscapes for focus and relaxation.',
     type: 'website',
-    siteName: 'Dwell-at',
+    siteName: 'Dwell',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dwell-at - Audio-Visual Soundscapes',
+    title: 'Dwell - Audio-Visual Soundscapes',
     description: 'Immerse yourself in seamless audio-visual soundscapes for focus and relaxation.',
   },
   alternates: {

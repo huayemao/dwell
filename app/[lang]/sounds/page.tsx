@@ -43,9 +43,9 @@ export default function SoundsPage({ params }: { params: Promise<{ lang: string 
           animate={{ opacity: 1, y: 0 }}
           className="mb-16 text-center"
         >
-          <h1 className="text-4xl md:text-6xl font-light tracking-tighter mb-4">{t('soundElements')}</h1>
+          <h1 className="text-4xl md:text-6xl font-light tracking-tighter mb-4">{t('soundEffects')}</h1>
           <p className="text-white/50 text-lg max-w-2xl mx-auto font-light">
-            {t('soundElementsSubtitle')}
+            {t('soundEffectsSubtitle')}
           </p>
         </motion.div>
 

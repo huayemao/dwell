@@ -19,7 +19,7 @@ export function Navigation({ lang }: { lang: Language }) {
   const links = [
     { href: `/${lang}`, label: t.title || 'Home', icon: Home },
     { href: `/${lang}/scenes`, label: t.scenes, icon: Layers },
-    { href: `/${lang}/sounds`, label: t.soundElements, icon: ListMusic },
+    { href: `/${lang}/sounds`, label: t.soundEffects, icon: ListMusic },
   ];
 
   return (
