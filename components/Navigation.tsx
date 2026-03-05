@@ -17,7 +17,7 @@ export function Navigation({ lang }: { lang: Language }) {
   if (pathname === `/${lang}/play`) return null;
 
   const links = [
-    { href: `/${lang}`, label: t.title || 'Home', icon: Home },
+    { href: `/${lang}`, label: t.short_name || 'Home', icon: Home },
     { href: `/${lang}/scenes`, label: t.scenes, icon: Layers },
     { href: `/${lang}/sounds`, label: t.soundEffects, icon: ListMusic },
   ];

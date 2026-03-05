@@ -1,6 +1,8 @@
 export const translations = {
   en: {
-    title: "Dwell",
+    short_name: "Dwell",
+    title: "Dwell - Out of Box Ambient Sounds & Scenes.",
+    description: "Discover & Create Ambient Sounds & Scenes. Immerse in nature’s symphony—rain, ocean waves, forest whispers. Free premium ambient sounds to spark creativity and nourish your soul.",
     subtitle: "Immerse yourself in seamless audio-visual soundscapes.",
     enter: "Enter Experience",
     scenes: "Scenes",
@@ -17,7 +19,7 @@ export const translations = {
     exitFullscreen: "Exit Fullscreen",
     customMix: "Custom Mix",
     playMix: "Play Mix",
-    soundEffects: "sound Effects",
+    soundEffects: "Sound Effects",
     soundEffectsSubtitle: "Mix and match individual sound effects to create your perfect ambient environment.",
     noSoundsFound: "No sounds found matching your criteria.",
     searchSounds: "Search sounds...",
@@ -32,9 +34,11 @@ export const translations = {
     aboutText: "Dwell is a premium, minimalist web application designed to help you focus, relax, and meditate through seamless audio-visual soundscapes.",
   },
   es: {
-    title: "Dwell",
+    short_name: "Dwell",
+    title: "Dwell - Sonidos y Escenas Ambientales Listos para Usar.",
+    description: "Descubre y crea sonidos y escenas ambientales. Sumérgete en la sinfonía de la naturaleza: lluvia, olas del océano, susurros del bosque. Sonidos ambientales premium gratuitos para inspirar tu creatividad y nutrir tu alma.",
     subtitle: "Sumérgete en paisajes sonoros audiovisuales sin interrupciones.",
-    enter: "Entrar a la Experiencia",
+    enter: "Entrar a la experiencia",
     scenes: "Escenas",
     volume: "Volumen",
     language: "Idioma",
@@ -45,26 +49,28 @@ export const translations = {
     close: "Cerrar",
     play: "Reproducir",
     pause: "Pausar",
-    fullscreen: "Pantalla Completa",
-    exitFullscreen: "Salir de Pantalla Completa",
-    customMix: "Mezcla Personalizada",
-    playMix: "Reproducir Mezcla",
-    soundEffects: "Elementos de Sonido",
-    soundEffectsSubtitle: "Mezcla y combina elementos de sonido individuales para crear tu entorno ambiental perfecto.",
-    noSoundsFound: "No se encontraron sonidos que coincidan con sus criterios.",
+    fullscreen: "Pantalla completa",
+    exitFullscreen: "Salir de pantalla completa",
+    customMix: "Mezcla personalizada",
+    playMix: "Reproducir mezcla",
+    soundEffects: "Efectos de sonido",
+    soundEffectsSubtitle: "Mezcla y combina efectos de sonido individuales para crear tu entorno ambiental perfecto.",
+    noSoundsFound: "No se encontraron sonidos que coincidan con tus criterios.",
     searchSounds: "Buscar sonidos...",
-    audioMixer: "Mezclador de Audio",
+    audioMixer: "Mezclador de audio",
     categoryAll: "Todos",
     categoryNature: "Naturaleza",
     categoryNoise: "Ruido",
     categoryAmbience: "Ambiente",
-    designPrinciples: "Principios de Diseño",
-    designPrinciplesText: "Dwell se basa en la filosofía de cero distracciones. Nuestro motor de audio web personalizado sintetiza paisajes sonoros infinitos y sin interrupciones directamente en su navegador. Mezcle elementos individuales para crear su entorno perfecto y comparta su mezcla única a través de una URL.",
-    aboutTitle: "Acerca de Dwell",
-    aboutText: "Dwell es una aplicación web minimalista y premium diseñada para ayudarlo a concentrarse, relajarse y meditar a través de paisajes sonoros audiovisuales sin interrupciones.",
+    designPrinciples: "Principios de diseño",
+    designPrinciplesText: "Dwell se basa en la filosofía de cero distracciones. Nuestro motor de audio web personalizado sintetiza paisajes sonoros infinitos y sin interrupciones directamente en tu navegador. Mezcla elementos individuales para crear tu entorno perfecto y comparte tu mezcla única a través de una URL.",
+    aboutTitle: "Sobre Dwell",
+    aboutText: "Dwell es una aplicación web minimalista y premium diseñada para ayudarte a concentrarte, relajarte y meditar a través de paisajes sonoros audiovisuales sin interrupciones.",
   },
   ja: {
-    title: "Dwell",
+    short_name: "Dwell",
+    title: "Dwell - すぐに使える環境音＆シーン.",
+    description: "環境音＆シーンを発見・作成。自然のシンフォニー—雨、海の波、森のささやき—に浸り、創造性を刺激し、心を癒します。プレミアムな環境音を無料でお楽しみいただけます。",
     subtitle: "シームレスなオーディオビジュアルのサウンドスケープに浸る。",
     enter: "体験を始める",
     scenes: "シーン",
@@ -81,8 +87,8 @@ export const translations = {
     exitFullscreen: "全画面表示を終了",
     customMix: "カスタムミックス",
     playMix: "ミックスを再生",
-    soundEffects: "サウンド要素",
-    soundEffectsSubtitle: "個々のサウンド要素を組み合わせて、完璧な環境音を作成します。",
+    soundEffects: "サウンドエフェクト",
+    soundEffectsSubtitle: "個々のサウンドエフェクトを組み合わせて、完璧な環境音を作成します。",
     noSoundsFound: "条件に一致するサウンドは見つかりませんでした。",
     searchSounds: "サウンドを検索...",
     audioMixer: "オーディオミキサー",
@@ -91,12 +97,14 @@ export const translations = {
     categoryNoise: "ノイズ",
     categoryAmbience: "環境音",
     designPrinciples: "設計原則",
-    designPrinciplesText: "Dwellは、気を散らすものがないという哲学に基づいて構築されています。カスタムWebオーディオエンジンは、ブラウザで直接、無限でシームレスなサウンドスケープを合成します。個々の要素を組み合わせて完璧な環境を作成し、URLを介して独自のミックスを共有します。",
+    designPrinciplesText: "Dwellは、気を散らすものがないという哲学に基づいて構築されています。カスタムWebオーディオエンジンは、ブラウザ内で直接、無限でシームレスなサウンドスケープを合成します。個々の要素を組み合わせて完璧な環境を作成し、URLを介して独自のミックスを共有できます。",
     aboutTitle: "Dwellについて",
     aboutText: "Dwellは、シームレスなオーディオビジュアルのサウンドスケープを通じて、集中、リラックス、瞑想を支援するように設計された、プレミアムでミニマリストなWebアプリケーションです。",
   },
   zh: {
-    title: "Dwell·栖",
+    short_name: "Dwell·栖",
+    title: "Dwell·栖 - 开箱即用的环境音与场景.",
+    description: "发现并创作环境音与场景。沉浸于自然的交响——雨声、海浪、森林呢喃。免费的高品质环境音，激发创意，滋养心灵。",
     subtitle: "沉浸在无缝视听音景中。",
     enter: "进入体验",
     scenes: "场景",
@@ -129,6 +137,8 @@ export const translations = {
   },
 };
 
+
+
 export type Language = keyof typeof translations;
 export type TranslationKey = keyof typeof translations.en;
 
@@ -145,4 +155,8 @@ export function getDictionary(locale: string) {
   }
   return translations[locale];
 }
+
+
+ export const t = (key: TranslationKey, lang: Language) =>
+    translations[lang]?.[key] || translations.en[key] || key;
 

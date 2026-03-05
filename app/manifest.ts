@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Dwell - Seamless Audio-Visual Soundscapes',
+    name: 'Dwell - Out of Box Ambient Sounds & Scenes',
     short_name: 'Dwell',
-    description: 'Experience high-end, minimalist audio-visual scenes. Relax with looping white noise, fireplace, rain, ocean, and forest soundscapes for focus and meditation.',
+    description: 'Discover & Build Audio-Visual Soundscapes. Immerse in nature’s symphony—rain, ocean waves, forest whispers. Free premium ambient sounds to spark creativity and nourish your soul.',
     start_url: '/',
     display: 'standalone',
     background_color: '#000000',

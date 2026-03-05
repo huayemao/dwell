@@ -1,13 +1,28 @@
-'use client';
+"use client";
 
-import { useState, useEffect, use } from 'react';
-import { useAppStore } from '@/store/useAppStore';
-import { translations, TranslationKey, Language } from '@/lib/i18n';
-import { audio } from '@/lib/audioEngine';
-import { SCENES } from '@/lib/config';
-import { motion, AnimatePresence } from 'motion/react';
-import { Flame, CloudRain, Waves, TreePine, SlidersHorizontal, ChevronLeft, ChevronRight, CloudLightning, Snowflake, Moon, Play, Pause, Volume2, VolumeX } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useEffect, use } from "react";
+import { useAppStore } from "@/store/useAppStore";
+import { translations, TranslationKey, Language } from "@/lib/i18n";
+import { audio } from "@/lib/audioEngine";
+import { SCENES } from "@/lib/config";
+import { motion, AnimatePresence } from "motion/react";
+import {
+  Flame,
+  CloudRain,
+  Waves,
+  TreePine,
+  SlidersHorizontal,
+  ChevronLeft,
+  ChevronRight,
+  CloudLightning,
+  Snowflake,
+  Moon,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const icons: Record<string, any> = {
   rain: CloudRain,
@@ -17,24 +32,32 @@ const icons: Record<string, any> = {
   thunderstorm: CloudLightning,
   winter_cabin: Snowflake,
   night_crickets: Moon,
-  custom: SlidersHorizontal
+  custom: SlidersHorizontal,
 };
 
-export default function Home({ params }: { params: Promise<{ lang: string }> }) {
+export default function Home({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
   const { lang } = use(params);
   const {
-    setCurrentScene, setIsPlaying,
-    setIsEntered, isPlaying,
-    currentScene, volume
+    setCurrentScene,
+    setIsPlaying,
+    setIsEntered,
+    isPlaying,
+    currentScene,
+    volume,
   } = useAppStore();
   const router = useRouter();
 
-  const t = (key: TranslationKey) => translations[lang as Language]?.[key] || translations.en[key] || key;
+  const t = (key: TranslationKey) =>
+    translations[lang as Language]?.[key] || translations.en[key] || key;
 
-  const initialIndex = SCENES.findIndex(s => s.id === currentScene);
-  const [carouselIndex, setCarouselIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
-
-
+  const initialIndex = SCENES.findIndex((s) => s.id === currentScene);
+  const [carouselIndex, setCarouselIndex] = useState(
+    initialIndex >= 0 ? initialIndex : 0
+  );
 
   const handleEnter = (sceneId: string) => {
     audio.init();
@@ -57,7 +80,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
   };
 
   const handleToggleMute = () => {
-   setIsPlaying(!isPlaying);
+    setIsPlaying(!isPlaying);
   };
 
   const previewScene = SCENES[carouselIndex];
@@ -66,21 +89,25 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
   return (
     <div className="fixed inset-0 bg-transparent text-white flex flex-col items-center justify-center font-sans overflow-y-auto z-40">
       <article className="sr-only">
-        <h2>{t('aboutTitle')}</h2>
-        <p>{t('aboutText')}</p>
-        <h3>{t('designPrinciples')}</h3>
-        <p>{t('designPrinciplesText')}</p>
+        <h2>{t("aboutTitle")}</h2>
+        <p>{t("aboutText")}</p>
+        <h3>{t("designPrinciples")}</h3>
+        <p>{t("designPrinciplesText")}</p>
       </article>
 
-      <div className="w-full max-w-4xl px-8 flex flex-col items-center min-h-dvh py-24">
+      <div className="w-full max-w-4xl px-8 flex flex-col justify-center items-center min-h-dvh gap-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-center space-y-6 mb-8 "
+          className="text-center space-y-6 "
         >
-          <h1 className="text-6xl md:text-8xl font-light tracking-tighter">{t('title')}</h1>
-          <p className="text-xl md:text-2xl text-white/50 font-light max-w-md mx-auto">{t('subtitle')}</p>
+          <h1 className="text-6xl md:text-8xl font-light tracking-tighter">
+            {t("short_name")}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/50 font-light max-w-md mx-auto">
+            {t("subtitle")}
+          </p>
         </motion.div>
 
         {/* Carousel */}
@@ -110,8 +137,12 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
                 <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4">
                   <Icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-light mb-2">{t(previewScene.id as TranslationKey) || previewScene.name}</h3>
-                <p className="text-white/50 text-sm max-w-xs">{previewScene.description}</p>
+                <h3 className="text-2xl font-light mb-2">
+                  {t(previewScene.id as TranslationKey) || previewScene.name}
+                </h3>
+                <p className="text-white/50 text-sm max-w-xs">
+                  {previewScene.description}
+                </p>
               </motion.div>
             </AnimatePresence>
 
@@ -128,34 +159,33 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
               onClick={() => handleEnter(previewScene.id)}
               className="px-8 py-4 bg-white text-black rounded-full hover:scale-105 transition-transform text-sm uppercase tracking-widest font-medium"
             >
-              {t('enter')}
+              {t("enter")}
             </button>
-          </div>
-
-          {/* 播放控制和静音按钮 */}
-          <div className="flex justify-center gap-4 mt-6">
             <button
               onClick={handleToggleMute}
               className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-              title={isPlaying ? '取消静音' : '静音'}
+              title={isPlaying ? "取消静音" : "静音"}
             >
               {!isPlaying ? (
                 <VolumeX className="w-5 h-5" />
               ) : (
-                <Volume2 className="w-5 h-5" />
+                <Volume2 className="w-5 h-5 shrink-0" />
               )}
             </button>
           </div>
+
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="mt-16 text-center max-w-2xl"
+          className="text-center max-w-2xl"
         >
-          <h3 className="text-lg font-light tracking-widest uppercase mb-4 opacity-50">{t('designPrinciples')}</h3>
+          <h3 className="text-lg font-light tracking-widest uppercase mb-4 opacity-50">
+            {t("designPrinciples")}
+          </h3>
           <p className="text-sm text-white/40 leading-relaxed">
-            {t('designPrinciplesText')}
+            {t("designPrinciplesText")}
           </p>
         </motion.div>
       </div>

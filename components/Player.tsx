@@ -279,11 +279,11 @@ export function Player({
                   onClick={handleBack}
                   className="text-2xl font-light tracking-widest opacity-50 hover:opacity-100 transition-opacity"
                 >
-                  {t("title")}
+                  {t("short_name")}
                 </button>
               ) : (
                 <div className="text-2xl font-light tracking-widest opacity-50">
-                  {t("title")}
+                  {t("short_name")}
                 </div>
               )}
 
