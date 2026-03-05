@@ -4,6 +4,7 @@ import '../globals.css'; // Global styles
 import { GlobalAudio } from '@/components/GlobalAudio';
 import { Visuals } from '@/components/Visuals';
 import { Navigation } from '@/components/Navigation';
+import { supportedLocales } from '@/lib/i18n';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,4 +54,10 @@ export default async function RootLayout({
       </body>
     </html>
   );
+}
+
+export async function generateStaticParams() {
+  return supportedLocales.map((locale) => ({
+    lang: locale,
+  }));
 }

@@ -131,3 +131,18 @@ export const translations = {
 
 export type Language = keyof typeof translations;
 export type TranslationKey = keyof typeof translations.en;
+
+export const supportedLocales: Language[] = ['en', 'es', 'ja', 'zh'];
+export const defaultLocale: Language = 'en';
+
+export function hasLocale(locale: string): locale is Language {
+  return supportedLocales.includes(locale as Language);
+}
+
+export function getDictionary(locale: string) {
+  if (!hasLocale(locale)) {
+    return translations[defaultLocale];
+  }
+  return translations[locale];
+}
+

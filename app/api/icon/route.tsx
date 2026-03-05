@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
           border: `${size * 0.02}px solid rgba(255,255,255,0.2)`,
         }}
       >
-        Z
+        D
       </div>
     ),
     { width: size, height: size }

@@ -1,14 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import { Home, ListMusic, Layers, PlayCircle } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
-import { Language, translations } from '@/lib/i18n';
+import { Language, translations, supportedLocales } from '@/lib/i18n';
 
 export function Navigation({ lang }: { lang: Language }) {
   const pathname = usePathname();
+  const router = useRouter();
   const isPlaying = useAppStore(state => state.isPlaying);
   const t = translations[lang] || translations.en;
   
@@ -52,13 +53,12 @@ export function Navigation({ lang }: { lang: Language }) {
           onChange={(e) => {
             const newLang = e.target.value;
             const newPath = pathname.replace(`/${lang}`, `/${newLang}`);
-            window.location.href = newPath;
+            router.push(newPath);
           }}
         >
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-          <option value="ja">JA</option>
-          <option value="zh">ZH</option>
+          {supportedLocales.map((locale) => (
+            <option key={locale} value={locale}>{locale.toUpperCase()}</option>
+          ))}
         </select>
 
         {isPlaying && (
