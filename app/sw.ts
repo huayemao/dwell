@@ -1,5 +1,3 @@
-/// <reference no-default-lib="true" />
-/// <reference lib="esnext" />
 /// <reference lib="webworker" />
 import { defaultCache } from "@serwist/turbopack/worker";
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";

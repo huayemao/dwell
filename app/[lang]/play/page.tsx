@@ -22,11 +22,11 @@ const icons: Record<string, any> = {
 
 export default function PlayPage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = use(params);
-  const { 
-    currentScene, setCurrentScene, 
-    isPlaying, setIsPlaying, 
+  const {
+    currentScene, setCurrentScene,
+    isPlaying, setIsPlaying,
     volume, setVolume,
-    getShareUrl
+    getShareUrl, loadMixFromUrl
   } = useAppStore();
   const router = useRouter();
 
@@ -47,6 +47,17 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
   };
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const searchParams = new URLSearchParams(window.location.search);
+    if (!searchParams) return;
+    const mix = searchParams.get('mix');
+    if (mix) {
+      loadMixFromUrl(mix);
+      setIsPlaying(true);
+    }
+  }, [loadMixFromUrl]);
+
+  useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
@@ -56,9 +67,9 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
+      document.documentElement.requestFullscreen().catch(() => { });
     } else {
-      document.exitFullscreen().catch(() => {});
+      document.exitFullscreen().catch(() => { });
     }
   };
 
@@ -71,7 +82,7 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 pointer-events-auto"
       onMouseMove={handleMouseMove}
       onTouchStart={handleMouseMove}
@@ -82,7 +93,7 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
 
       <AnimatePresence>
         {showControls && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -91,16 +102,16 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
           >
             {/* Top Bar */}
             <div className="flex justify-between items-start pointer-events-auto">
-              <button 
+              <button
                 onClick={() => router.push(`/${lang}`)}
                 className="text-2xl font-light tracking-widest opacity-50 hover:opacity-100 transition-opacity"
               >
                 {t('title')}
               </button>
-              
+
               <div className="flex items-center gap-6">
-                <button 
-                  onClick={handleShare} 
+                <button
+                  onClick={handleShare}
                   className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity text-sm"
                 >
                   <Share2 className="w-4 h-4" />
@@ -108,7 +119,7 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
                 </button>
                 <div className="flex items-center gap-2 group">
                   <Globe className="w-5 h-5 opacity-50 group-hover:opacity-100 transition-opacity" />
-                  <select 
+                  <select
                     value={lang}
                     onChange={(e) => {
                       const newLang = e.target.value;
@@ -130,21 +141,21 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
 
             {/* Bottom Bar */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-8 pointer-events-auto">
-              
+
               {/* Play/Pause & Volume */}
               <div className="flex items-center gap-6 bg-black/20 backdrop-blur-md p-4 rounded-full border border-white/10">
-                <button 
+                <button
                   onClick={() => setIsPlaying(!isPlaying)}
                   className="w-12 h-12 flex items-center justify-center bg-white text-black rounded-full hover:scale-105 transition-transform"
                 >
                   {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-1" />}
                 </button>
-                
+
                 <div className="flex items-center gap-3 w-32">
                   {volume === 0 ? <VolumeX className="w-4 h-4 opacity-50" /> : <Volume2 className="w-4 h-4 opacity-50" />}
-                  <input 
-                    type="range" 
-                    min="0" max="1" step="0.01" 
+                  <input
+                    type="range"
+                    min="0" max="1" step="0.01"
                     value={volume}
                     onChange={(e) => setVolume(parseFloat(e.target.value))}
                     className="w-full h-1 bg-white/20 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full"
@@ -160,11 +171,10 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
                     <button
                       key={scene.id}
                       onClick={() => setCurrentScene(scene.id)}
-                      className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 whitespace-nowrap ${
-                        currentScene === scene.id 
-                          ? 'bg-white/10 text-white' 
-                          : 'text-white/40 hover:text-white hover:bg-white/5'
-                      }`}
+                      className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 whitespace-nowrap ${currentScene === scene.id
+                        ? 'bg-white/10 text-white'
+                        : 'text-white/40 hover:text-white hover:bg-white/5'
+                        }`}
                       title={scene.name}
                     >
                       <Icon className="w-5 h-5" />
@@ -175,11 +185,10 @@ export default function PlayPage({ params }: { params: Promise<{ lang: string }>
                 <div className="w-px h-8 bg-white/10 mx-2 shrink-0" />
                 <button
                   onClick={() => setShowMixer(!showMixer)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 shrink-0 ${
-                    showMixer || currentScene === 'custom'
-                      ? 'bg-white/10 text-white' 
-                      : 'text-white/40 hover:text-white hover:bg-white/5'
-                  }`}
+                  className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 shrink-0 ${showMixer || currentScene === 'custom'
+                    ? 'bg-white/10 text-white'
+                    : 'text-white/40 hover:text-white hover:bg-white/5'
+                    }`}
                   title={t('audioMixer')}
                 >
                   <SlidersHorizontal className="w-5 h-5" />

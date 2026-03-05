@@ -7,7 +7,7 @@ import { audio } from '@/lib/audioEngine';
 import { SCENES } from '@/lib/config';
 import { motion, AnimatePresence } from 'motion/react';
 import { Flame, CloudRain, Waves, TreePine, SlidersHorizontal, ChevronLeft, ChevronRight, CloudLightning, Snowflake, Moon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const icons: Record<string, any> = {
   rain: CloudRain,
@@ -22,8 +22,8 @@ const icons: Record<string, any> = {
 
 export default function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = use(params);
-  const { 
-    setCurrentScene, setIsPlaying, 
+  const {
+    setCurrentScene, setIsPlaying,
     setIsEntered, loadMixFromUrl,
     currentScene
   } = useAppStore();
@@ -34,16 +34,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
   const initialIndex = SCENES.findIndex(s => s.id === currentScene);
   const [carouselIndex, setCarouselIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const searchParams = new URLSearchParams(window.location.search);
-      const mix = searchParams.get('mix');
-      if (mix) {
-        loadMixFromUrl(mix);
-        handleEnter('custom');
-      }
-    }
-  }, [loadMixFromUrl]);
+
 
   const handleEnter = (sceneId: string) => {
     audio.init();
@@ -76,9 +67,9 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
         <h3>{t('designPrinciples')}</h3>
         <p>{t('designPrinciplesText')}</p>
       </article>
-      
+
       <div className="w-full max-w-4xl px-8 py-24 flex flex-col items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -89,22 +80,22 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
         </motion.div>
 
         {/* Carousel */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
           className="w-full max-w-2xl relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md shadow-2xl"
         >
           <div className="flex items-center justify-between mb-8">
-            <button 
+            <button
               onClick={handlePrev}
               className="p-2 hover:bg-white/10 rounded-full transition-colors"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            
+
             <AnimatePresence mode="wait">
-              <motion.div 
+              <motion.div
                 key={previewScene.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -120,7 +111,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
               </motion.div>
             </AnimatePresence>
 
-            <button 
+            <button
               onClick={handleNext}
               className="p-2 hover:bg-white/10 rounded-full transition-colors"
             >
@@ -129,7 +120,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
           </div>
 
           <div className="flex justify-center">
-            <button 
+            <button
               onClick={() => handleEnter(previewScene.id)}
               className="px-8 py-4 bg-white text-black rounded-full hover:scale-105 transition-transform text-sm uppercase tracking-widest font-medium"
             >
@@ -138,7 +129,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
