@@ -6,7 +6,7 @@ import { Visuals } from '@/components/Visuals';
 import { Navigation } from '@/components/Navigation';
 import { supportedLocales } from '@/lib/i18n';
 import { SerwistProvider } from '../serwist';
-
+import { Analytics } from "@vercel/analytics/next"
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
@@ -54,6 +54,7 @@ export default async function RootLayout({
           <Navigation lang={lang as any} />
           {children}
         </SerwistProvider>
+        <Analytics />
       </body>
     </html>
   );
