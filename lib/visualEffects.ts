@@ -73,14 +73,14 @@ export const visualEffects: Record<string, VisualEffect> = {
   },
   fireplace: {
     init: (canvas, particles) => {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 200; i++) {
         particles.push({
-          x: canvas.width / 2 + (Math.random() * 400 - 200),
-          y: canvas.height + Math.random() * 200,
-          size: Math.random() * 4 + 1,
+          x: canvas.width / 2 + (Math.random() * 600 - 300),
+          y: canvas.height + Math.random() * 150,
+          size: Math.random() * 8 + 2,
           speedY: Math.random() * 2 + 1,
-          speedX: Math.random() * 1 - 0.5,
-          life: Math.random() * 100 + 50,
+          speedX: Math.random() * 1.5 - 0.75,
+          life: Math.random() * 200 + 50,
           maxLife: 150
         });
       }
@@ -89,8 +89,8 @@ export const visualEffects: Record<string, VisualEffect> = {
       ctx.fillStyle = 'rgba(15, 5, 0, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const gradient = ctx.createRadialGradient(canvas.width/2, canvas.height, 0, canvas.width/2, canvas.height, 400);
-      gradient.addColorStop(0, 'rgba(200, 50, 0, 0.1)');
+      const gradient = ctx.createRadialGradient(canvas.width/2, canvas.height * 0.6, 0, canvas.width/2, canvas.height * 0.6, 600);
+      gradient.addColorStop(0, 'rgba(200, 50, 0, 0.15)');
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -98,9 +98,9 @@ export const visualEffects: Record<string, VisualEffect> = {
       particles.forEach(p => {
         p.life--;
         if (p.life <= 0) {
-          p.x = canvas.width / 2 + (Math.random() * 400 - 200);
+          p.x = canvas.width / 2 + (Math.random() * 600 - 300);
           p.y = canvas.height + 10;
-          p.life = Math.random() * 100 + 50;
+          p.life = Math.random() * 200 + 50;
           p.maxLife = p.life;
         }
 
