@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Dwell-at - Seamless Audio-Visual Soundscapes',
-    short_name: 'Dwell-at',
+    name: 'Dwell at - Seamless Audio-Visual Soundscapes',
+    short_name: 'Dwell at',
     description: 'Experience high-end, minimalist audio-visual scenes. Relax with looping white noise, fireplace, rain, ocean, and forest soundscapes for focus and meditation.',
     start_url: '/',
     display: 'standalone',

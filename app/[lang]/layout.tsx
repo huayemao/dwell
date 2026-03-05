@@ -5,6 +5,7 @@ import { GlobalAudio } from '@/components/GlobalAudio';
 import { Visuals } from '@/components/Visuals';
 import { Navigation } from '@/components/Navigation';
 import { supportedLocales } from '@/lib/i18n';
+import { SerwistProvider } from '../serwist';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -47,10 +48,12 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={inter.variable}>
       <body suppressHydrationWarning className="font-sans bg-black text-white overflow-hidden">
-        <GlobalAudio />
-        <Visuals />
-        <Navigation lang={lang as any} />
-        {children}
+        <SerwistProvider swUrl="/serwist/sw.js">
+          <GlobalAudio />
+          <Visuals />
+          <Navigation lang={lang as any} />
+          {children}
+        </SerwistProvider>
       </body>
     </html>
   );
