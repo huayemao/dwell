@@ -6,7 +6,7 @@ import { translations, TranslationKey, Language } from '@/lib/i18n';
 import { audio } from '@/lib/audioEngine';
 import { SCENES } from '@/lib/config';
 import { motion, AnimatePresence } from 'motion/react';
-import { Flame, CloudRain, Waves, TreePine, SlidersHorizontal, ChevronLeft, ChevronRight, CloudLightning, Snowflake, Moon } from 'lucide-react';
+import { Flame, CloudRain, Waves, TreePine, SlidersHorizontal, ChevronLeft, ChevronRight, CloudLightning, Snowflake, Moon, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 const icons: Record<string, any> = {
@@ -24,8 +24,8 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
   const { lang } = use(params);
   const {
     setCurrentScene, setIsPlaying,
-    setIsEntered, loadMixFromUrl,
-    currentScene
+    setIsEntered, isPlaying,
+    currentScene, volume
   } = useAppStore();
   const router = useRouter();
 
@@ -56,6 +56,10 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
     setCurrentScene(SCENES[newIndex].id);
   };
 
+  const handleToggleMute = () => {
+   setIsPlaying(!isPlaying);
+  };
+
   const previewScene = SCENES[carouselIndex];
   const Icon = icons[previewScene.id] || SlidersHorizontal;
 
@@ -68,12 +72,12 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
         <p>{t('designPrinciplesText')}</p>
       </article>
 
-      <div className="w-full max-w-4xl px-8 py-24 flex flex-col items-center">
+      <div className="w-full max-w-4xl px-8 flex flex-col items-center min-h-dvh py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-center space-y-6 mb-16"
+          className="text-center space-y-6 mb-8 "
         >
           <h1 className="text-6xl md:text-8xl font-light tracking-tighter">{t('title')}</h1>
           <p className="text-xl md:text-2xl text-white/50 font-light max-w-md mx-auto">{t('subtitle')}</p>
@@ -119,7 +123,7 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
             </button>
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-4">
             <button
               onClick={() => handleEnter(previewScene.id)}
               className="px-8 py-4 bg-white text-black rounded-full hover:scale-105 transition-transform text-sm uppercase tracking-widest font-medium"
@@ -127,8 +131,22 @@ export default function Home({ params }: { params: Promise<{ lang: string }> }) 
               {t('enter')}
             </button>
           </div>
-        </motion.div>
 
+          {/* 播放控制和静音按钮 */}
+          <div className="flex justify-center gap-4 mt-6">
+            <button
+              onClick={handleToggleMute}
+              className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+              title={isPlaying ? '取消静音' : '静音'}
+            >
+              {!isPlaying ? (
+                <VolumeX className="w-5 h-5" />
+              ) : (
+                <Volume2 className="w-5 h-5" />
+              )}
+            </button>
+          </div>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
