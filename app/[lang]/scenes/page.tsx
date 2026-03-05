@@ -27,11 +27,11 @@ export default function ScenesPage({ params }: { params: Promise<{ lang: string 
   const t = (key: TranslationKey) => translations[lang as Language]?.[key] || translations.en[key] || key;
 
   const handlePlayScene = (sceneId: string) => {
-    audio.init();
-    setIsEntered(true);
-    setIsPlaying(true);
-    setCurrentScene(sceneId);
-    router.push(`/${lang}/play`);
+    // audio.init();
+    // setIsEntered(true);
+    // setIsPlaying(true);
+    // setCurrentScene(sceneId);
+    router.push(`/${lang}/scenes/${sceneId}`);
   };
 
   return (
