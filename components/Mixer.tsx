@@ -3,7 +3,7 @@
 import { useAppStore } from '@/store/useAppStore';
 import { SOUND_ELEMENTS } from '@/lib/config';
 import { Volume2, VolumeX, X } from 'lucide-react';
-import { Language, translations } from '@/lib/i18n';
+import { Language, translations, tSound } from '@/lib/i18n';
 
 export function Mixer({ onClose, lang }: { onClose: () => void, lang: Language }) {
   const { activeMix, setMixVolume } = useAppStore();
@@ -26,19 +26,19 @@ export function Mixer({ onClose, lang }: { onClose: () => void, lang: Language }
           return (
             <div key={element.id} className={`transition-opacity ${isActive ? 'opacity-100' : 'opacity-50 hover:opacity-100'}`}>
               <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium tracking-wide">{element.name}</span>
+                <span className="text-sm font-medium tracking-wide">{tSound(element.id, lang)}</span>
                 <span className="text-xs opacity-50">{Math.round(volume * 100)}%</span>
               </div>
               <div className="flex items-center gap-4">
-                <button 
+                <button
                   onClick={() => setMixVolume(element.id, isActive ? 0 : 0.5)}
                   className="opacity-50 hover:opacity-100 transition-opacity"
                 >
                   {isActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
                 </button>
-                <input 
-                  type="range" 
-                  min="0" max="1" step="0.01" 
+                <input
+                  type="range"
+                  min="0" max="1" step="0.01"
                   value={volume}
                   onChange={(e) => setMixVolume(element.id, parseFloat(e.target.value))}
                   className="flex-1 h-1 bg-white/20 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full"

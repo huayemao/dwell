@@ -1,7 +1,9 @@
+import { SoundId } from "./i18n";
+
 export type SynthType = 'pink' | 'brown' | 'white' | 'crackle' | 'birds' | 'ocean' | 'wind' | 'thunder' | 'river' | 'crickets' | 'chimes';
 
 export interface SoundElementDef {
-  id: string;
+  id: SoundId;
   name: string;
   category: 'nature' | 'noise' | 'ambience';
   synthType: SynthType;

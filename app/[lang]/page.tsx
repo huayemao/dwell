@@ -2,7 +2,7 @@
 
 import { useState, useEffect, use } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import { translations, TranslationKey, Language } from "@/lib/i18n";
+import { translations, TranslationKey, Language, tScene, t } from "@/lib/i18n";
 import { audio } from "@/lib/audioEngine";
 import { SCENES } from "@/lib/config";
 import { motion, AnimatePresence } from "motion/react";
@@ -38,7 +38,7 @@ const icons: Record<string, any> = {
 export default function Home({
   params,
 }: {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Language }>;
 }) {
   const { lang } = use(params);
   const {
@@ -51,8 +51,7 @@ export default function Home({
   } = useAppStore();
   const router = useRouter();
 
-  const t = (key: TranslationKey) =>
-    translations[lang as Language]?.[key] || translations.en[key] || key;
+
 
   const initialIndex = SCENES.findIndex((s) => s.id === currentScene);
   const [carouselIndex, setCarouselIndex] = useState(
@@ -89,10 +88,10 @@ export default function Home({
   return (
     <div className="fixed inset-0 bg-transparent text-white flex flex-col items-center justify-center font-sans overflow-y-auto z-40">
       <article className="sr-only">
-        <h2>{t("aboutTitle")}</h2>
-        <p>{t("aboutText")}</p>
-        <h3>{t("designPrinciples")}</h3>
-        <p>{t("designPrinciplesText")}</p>
+        <h2>{t("aboutTitle", lang)}</h2>
+        <p>{t("aboutText", lang)}</p>
+        <h3>{t("designPrinciples", lang)}</h3>
+        <p>{t("designPrinciplesText", lang)}</p>
       </article>
 
       <div className="w-full max-w-4xl px-8 flex flex-col justify-center items-center min-h-dvh gap-8">
@@ -103,10 +102,10 @@ export default function Home({
           className="text-center space-y-6 "
         >
           <h1 className="text-6xl md:text-8xl font-light tracking-tighter">
-            {t("short_name")}
+            {t("short_name", lang)}
           </h1>
           <p className="text-xl md:text-2xl text-white/50 font-light max-w-md mx-auto">
-            {t("subtitle")}
+            {t("subtitle", lang)}
           </p>
         </motion.div>
 
@@ -137,12 +136,19 @@ export default function Home({
                 <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4">
                   <Icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-light mb-2">
-                  {t(previewScene.id as TranslationKey) || previewScene.name}
-                </h3>
-                <p className="text-white/50 text-sm max-w-xs">
-                  {previewScene.description}
-                </p>
+                {(() => {
+                  const sceneData = tScene(previewScene.id as any, lang as Language);
+                  return (
+                    <>
+                      <h3 className="text-2xl font-light mb-2">
+                        {sceneData.name}
+                      </h3>
+                      <p className="text-white/50 text-sm max-w-xs">
+                        {sceneData.description}
+                      </p>
+                    </>
+                  );
+                })()}
               </motion.div>
             </AnimatePresence>
 
@@ -159,12 +165,12 @@ export default function Home({
               onClick={() => handleEnter(previewScene.id)}
               className="px-8 py-4 bg-white text-black rounded-full hover:scale-105 transition-transform text-sm uppercase tracking-widest font-medium"
             >
-              {t("enter")}
+              {t("enter", lang)}
             </button>
             <button
               onClick={handleToggleMute}
               className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-              title={isPlaying ? "取消静音" : "静音"}
+              title={isPlaying ? t("unmute", lang) : t("mute", lang)}
             >
               {!isPlaying ? (
                 <VolumeX className="w-5 h-5" />
@@ -182,10 +188,10 @@ export default function Home({
           className="text-center max-w-2xl"
         >
           <h3 className="text-lg font-light tracking-widest uppercase mb-4 opacity-50">
-            {t("designPrinciples")}
+            {t("designPrinciples", lang)}
           </h3>
           <p className="text-sm text-white/40 leading-relaxed">
-            {t("designPrinciplesText")}
+            {t("designPrinciplesText", lang)}
           </p>
         </motion.div>
       </div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import { translations, TranslationKey, Language } from "@/lib/i18n";
+import { translations, TranslationKey, Language, tScene, t } from "@/lib/i18n";
 import { Mixer } from "@/components/Mixer";
 import { SCENES } from "@/lib/config";
 import { audio } from "@/lib/audioEngine";
@@ -114,8 +114,7 @@ export function Player({
   } = useAppStore();
   const router = useRouter();
 
-  const t = (key: TranslationKey) =>
-    translations[lang]?.[key] || translations.en[key] || key;
+
 
   const [showControls, setShowControls] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -193,9 +192,9 @@ export function Player({
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
+      document.documentElement.requestFullscreen().catch(() => { });
     } else {
-      document.exitFullscreen().catch(() => {});
+      document.exitFullscreen().catch(() => { });
     }
   };
 
@@ -243,16 +242,16 @@ export function Player({
                 <Play className="w-10 h-10 text-white ml-1" />
               </div>
               <h2 className="text-2xl font-light text-white mb-2">
-                {t("enter") || "Enter Experience"}
+                {t("enter", lang) || "Enter Experience"}
               </h2>
               <p className="text-white/50 text-sm">
                 {lang === "zh"
                   ? "点击任意处开始播放"
                   : lang === "ja"
-                  ? "タップして再生を開始"
-                  : lang === "es"
-                  ? "Toca para comenzar"
-                  : "Tap anywhere to start"}
+                    ? "タップして再生を開始"
+                    : lang === "es"
+                      ? "Toca para comenzar"
+                      : "Tap anywhere to start"}
               </p>
             </motion.div>
           </motion.div>
@@ -279,11 +278,11 @@ export function Player({
                   onClick={handleBack}
                   className="text-2xl font-light tracking-widest opacity-50 hover:opacity-100 transition-opacity"
                 >
-                  {t("short_name")}
+                  {t("short_name", lang)}
                 </button>
               ) : (
                 <div className="text-2xl font-light tracking-widest opacity-50">
-                  {t("short_name")}
+                  {t("short_name", lang)}
                 </div>
               )}
 
@@ -380,16 +379,15 @@ export function Player({
                     <button
                       key={scene.id}
                       onClick={() => setCurrentScene(scene.id)}
-                      className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 whitespace-nowrap ${
-                        currentScene === scene.id
-                          ? "bg-white/10 text-white"
-                          : "text-white/40 hover:text-white hover:bg-white/5"
-                      }`}
-                      title={scene.name}
+                      className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 whitespace-nowrap ${currentScene === scene.id
+                        ? "bg-white/10 text-white"
+                        : "text-white/40 hover:text-white hover:bg-white/5"
+                        }`}
+                      title={tScene(scene.id as any, lang).name}
                     >
                       <Icon className="w-5 h-5" />
                       <span className="text-sm hidden md:block">
-                        {t(scene.id as any) || scene.name}
+                        {tScene(scene.id as any, lang).name}
                       </span>
                     </button>
                   );
@@ -397,16 +395,15 @@ export function Player({
                 <div className="w-px h-8 bg-white/10 mx-2 shrink-0" />
                 <button
                   onClick={() => setShowMixer(!showMixer)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 shrink-0 ${
-                    showMixer || currentScene === "custom"
-                      ? "bg-white/10 text-white"
-                      : "text-white/40 hover:text-white hover:bg-white/5"
-                  }`}
-                  title={t("audioMixer")}
+                  className={`flex items-center gap-2 px-4 py-3 rounded-full transition-all duration-300 shrink-0 ${showMixer || currentScene === "custom"
+                    ? "bg-white/10 text-white"
+                    : "text-white/40 hover:text-white hover:bg-white/5"
+                    }`}
+                  title={t("audioMixer", lang)}
                 >
                   <SlidersHorizontal className="w-5 h-5" />
                   <span className="text-sm hidden md:block">
-                    {t("audioMixer")}
+                    {t("audioMixer", lang)}
                   </span>
                 </button>
               </div>

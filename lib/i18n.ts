@@ -2,7 +2,7 @@ export const translations = {
   en: {
     short_name: "Dwell",
     title: "Dwell - ambient sounds & scenes.",
-    description: "Discover & Create Ambient Sounds & Scenes. Immerse in nature’s symphony—rain, ocean waves, forest whispers. Free premium ambient sounds to spark creativity and nourish your soul.",
+    description: "Discover & Create Ambient Sounds & Scenes. Immerse in nature's symphony—rain, ocean waves, forest whispers. Free premium ambient sounds to spark creativity and nourish your soul.",
     subtitle: "Immerse yourself in seamless audio-visual soundscapes.",
     enter: "Enter Experience",
     scenes: "Scenes",
@@ -19,6 +19,8 @@ export const translations = {
     exitFullscreen: "Exit Fullscreen",
     customMix: "Custom Mix",
     playMix: "Play Mix",
+    mute: "Mute",
+    unmute: "Unmute",
     soundEffects: "Sound Effects",
     soundEffectsSubtitle: "Mix and match individual sound effects to create your perfect ambient environment.",
     noSoundsFound: "No sounds found matching your criteria.",
@@ -32,6 +34,33 @@ export const translations = {
     designPrinciplesText: "Dwell is built on the philosophy of zero distractions. Our custom Web Audio engine synthesizes infinite, seamless soundscapes directly in your browser. Mix individual elements to create your perfect environment, and share your unique mix via URL.",
     aboutTitle: "About Dwell",
     aboutText: "Dwell is a premium, minimalist web application designed to help you focus, relax, and meditate through seamless audio-visual soundscapes.",
+    dwellContent: {
+      sounds: {
+        rain_heavy: 'Heavy Rain',
+        ocean_waves: 'Ocean Waves',
+        fire_rumble: 'Fire Rumble',
+        fire_crackle: 'Fire Crackle',
+        wind_forest: 'Forest Wind',
+        birds: 'Birds Chirping',
+        thunder: 'Thunder Strikes',
+        river: 'Mountain River',
+        crickets: 'Night Crickets',
+        chimes: 'Wind Chimes',
+        white_noise: 'White Noise',
+        pink_noise: 'Pink Noise',
+        brown_noise: 'Brown Noise',
+      },
+      scenes: {
+        rain: { name: 'Rainstorm', description: 'A calming downpour to wash away distractions.' },
+        ocean: { name: 'Midnight Ocean', description: 'Deep, rolling waves under a moonlit sky.' },
+        fireplace: { name: 'Cozy Fireplace', description: 'Warm crackling embers for deep focus.' },
+        forest: { name: 'Deep Forest', description: 'Serene woodland environment with birdsong.' },
+        thunderstorm: { name: 'Thunderstorm', description: 'Intense rain with rolling thunder.' },
+        winter_cabin: { name: 'Winter Cabin', description: 'Snow falling outside a warm cabin.' },
+        night_crickets: { name: 'Summer Night', description: 'Peaceful night with crickets and chimes.' },
+        custom: { name: 'Custom Mix', description: 'Your personalized soundscape.' },
+      },
+    },
   },
   es: {
     short_name: "Dwell",
@@ -53,6 +82,8 @@ export const translations = {
     exitFullscreen: "Salir de pantalla completa",
     customMix: "Mezcla personalizada",
     playMix: "Reproducir mezcla",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
     soundEffects: "Efectos de sonido",
     soundEffectsSubtitle: "Mezcla y combina efectos de sonido individuales para crear tu entorno ambiental perfecto.",
     noSoundsFound: "No se encontraron sonidos que coincidan con tus criterios.",
@@ -66,6 +97,33 @@ export const translations = {
     designPrinciplesText: "Dwell se basa en la filosofía de cero distracciones. Nuestro motor de audio web personalizado sintetiza paisajes sonoros infinitos y sin interrupciones directamente en tu navegador. Mezcla elementos individuales para crear tu entorno perfecto y comparte tu mezcla única a través de una URL.",
     aboutTitle: "Sobre Dwell",
     aboutText: "Dwell es una aplicación web minimalista y premium diseñada para ayudarte a concentrarte, relajarte y meditar a través de paisajes sonoros audiovisuales sin interrupciones.",
+    dwellContent: {
+      sounds: {
+        rain_heavy: 'Lluvia intensa',
+        ocean_waves: 'Olas del océano',
+        fire_rumble: 'Rugido del fuego',
+        fire_crackle: 'Crepitar del fuego',
+        wind_forest: 'Viento del bosque',
+        birds: 'Pájaros cantando',
+        thunder: 'Truenos',
+        river: 'Río de montaña',
+        crickets: 'Grillos nocturnos',
+        chimes: 'Campanas de viento',
+        white_noise: 'Ruido blanco',
+        pink_noise: 'Ruido rosa',
+        brown_noise: 'Ruido marrón',
+      },
+      scenes: {
+        rain: { name: 'Tormenta de lluvia', description: 'Una lluvia calmada para eliminar las distracciones.' },
+        ocean: { name: 'Océano medianoche', description: 'Olas profundas bajo un cielo iluminado por la luna.' },
+        fireplace: { name: 'Chimenea acogedora', description: 'Brasas cálidas y crepitantes para una concentración profunda.' },
+        forest: { name: 'Bosque profundo', description: 'Entorno boscoso sereno con canto de pájaros.' },
+        thunderstorm: { name: 'Tormenta', description: 'Lluvia intensa con truenos.' },
+        winter_cabin: { name: 'Cabaña de invierno', description: 'Nieve cayendo fuera de una cabaña cálida.' },
+        night_crickets: { name: 'Noche de verano', description: 'Noche pacífica con grillos y campanas.' },
+        custom: { name: 'Mezcla personalizada', description: 'Tu paisaje sonoro personalizado.' },
+      },
+    },
   },
   ja: {
     short_name: "Dwell",
@@ -87,6 +145,8 @@ export const translations = {
     exitFullscreen: "全画面表示を終了",
     customMix: "カスタムミックス",
     playMix: "ミックスを再生",
+    mute: "ミュート",
+    unmute: "ミュート解除",
     soundEffects: "サウンドエフェクト",
     soundEffectsSubtitle: "個々のサウンドエフェクトを組み合わせて、完璧な環境音を作成します。",
     noSoundsFound: "条件に一致するサウンドは見つかりませんでした。",
@@ -100,6 +160,33 @@ export const translations = {
     designPrinciplesText: "Dwellは、気を散らすものがないという哲学に基づいて構築されています。カスタムWebオーディオエンジンは、ブラウザ内で直接、無限でシームレスなサウンドスケープを合成します。個々の要素を組み合わせて完璧な環境を作成し、URLを介して独自のミックスを共有できます。",
     aboutTitle: "Dwellについて",
     aboutText: "Dwellは、シームレスなオーディオビジュアルのサウンドスケープを通じて、集中、リラックス、瞑想を支援するように設計された、プレミアムでミニマリストなWebアプリケーションです。",
+    dwellContent: {
+      sounds: {
+        rain_heavy: '激しい雨',
+        ocean_waves: '海の波',
+        fire_rumble: '炎の轟き',
+        fire_crackle: '炎のパチパチ',
+        wind_forest: '森の風',
+        birds: '鳥のさえずり',
+        thunder: '雷鳴',
+        river: '山の川',
+        crickets: '夜の虫',
+        chimes: '風鈴',
+        white_noise: 'ホワイトノイズ',
+        pink_noise: 'ピンクノイズ',
+        brown_noise: 'ブラウンノイズ',
+      },
+      scenes: {
+        rain: { name: '雨storm', description: '気を散らすものを洗い落とす穏やかな土砂降り。' },
+        ocean: { name: '真夜中の海', description: '月明かりの下で波打つ深い海。' },
+        fireplace: { name: '居心地の良い暖炉', description: '集中するための温かくパチパチ鳴る炭火。' },
+        forest: { name: '深い森', description: '鳥のさえずりが聞こえる静かな森林。' },
+        thunderstorm: { name: '雷雨', description: '雷を伴う激しい雨。' },
+        winter_cabin: { name: '冬の小屋', description: '暖かい小屋の外に雪が降る。' },
+        night_crickets: { name: '夏の夜', description: '虫と風鈴がある静かな夜。' },
+        custom: { name: 'カスタムミックス', description: 'あなた専用のサウンドスケープ。' },
+      },
+    },
   },
   zh: {
     short_name: "Dwell·栖",
@@ -121,6 +208,8 @@ export const translations = {
     exitFullscreen: "退出全屏",
     customMix: "自定义混音",
     playMix: "播放混音",
+    mute: "静音",
+    unmute: "取消静音",
     soundEffects: "音效",
     soundEffectsSubtitle: "混合搭配单个音效，打造完美的氛围环境。",
     noSoundsFound: "未找到符合条件的声音。",
@@ -134,10 +223,35 @@ export const translations = {
     designPrinciplesText: "Dwell 建立在零干扰的理念之上。我们的自定义 Web Audio 引擎直接在您的浏览器中合成无限、无缝的音景。混合单个音效以创建您完美的环境，并通过 URL 分享您独特的混音。",
     aboutTitle: "关于 Dwell",
     aboutText: "Dwell 是一款高级、极简的 Web 应用程序，旨在通过无缝视听音景帮助您集中注意力、放松和冥想。",
+    dwellContent: {
+      sounds: {
+        rain_heavy: '大雨',
+        ocean_waves: '海浪',
+        fire_rumble: '火焰轰鸣',
+        fire_crackle: '火焰噼啪',
+        wind_forest: '森林风',
+        birds: '鸟鸣',
+        thunder: '雷声',
+        river: '山涧',
+        crickets: '夜蟋蟀',
+        chimes: '风铃',
+        white_noise: '白噪音',
+        pink_noise: '粉红噪音',
+        brown_noise: '棕色噪音',
+      },
+      scenes: {
+        rain: { name: '暴雨', description: '一场洗去纷扰的宁静大雨。' },
+        ocean: { name: '午夜海洋', description: '月光下波涛翻滚。' },
+        fireplace: { name: '温暖壁炉', description: '为深度专注而生的温暖噼啪声。' },
+        forest: { name: '幽深森林', description: '鸟语花香的宁静 woodland 环境。' },
+        thunderstorm: { name: '雷暴', description: '伴随着滚滚雷声的大雨。' },
+        winter_cabin: { name: '冬日小屋', description: '温暖的屋外雪花飘落。' },
+        night_crickets: { name: '夏夜', description: '蟋蟀和风铃的宁静夜晚。' },
+        custom: { name: '自定义混音', description: '您的个性化音景。' },
+      },
+    },
   },
 };
-
-
 
 export type Language = keyof typeof translations;
 export type TranslationKey = keyof typeof translations.en;
@@ -156,7 +270,16 @@ export function getDictionary(locale: string) {
   return translations[locale];
 }
 
+export const t = (key: TranslationKey, lang: Language): string =>
+  translations[lang]?.[key] as string || translations.en[key] as string || key;
 
- export const t = (key: TranslationKey, lang: Language) =>
-    translations[lang]?.[key] || translations.en[key] || key;
+export type SoundId = keyof typeof translations.en.dwellContent.sounds;
+export type SceneId = keyof typeof translations.en.dwellContent.scenes;
 
+export const tSound = (soundId: SoundId, lang: Language) =>
+  translations[lang]?.dwellContent?.sounds?.[soundId] || translations.en.dwellContent.sounds[soundId] || soundId;
+
+export const tScene = (sceneId: SceneId, lang: Language) => {
+  const scene = translations[lang]?.dwellContent?.scenes?.[sceneId] || translations.en.dwellContent.scenes[sceneId];
+  return scene || { name: sceneId, description: '' };
+};
