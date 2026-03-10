@@ -12,7 +12,7 @@ import { translations, TranslationKey, Language, tSound, t } from '@/lib/i18n';
 export default function SoundsPage({ params }: { params: Promise<{ lang: Language }> }) {
   const { lang } = use(params);
   const router = useRouter();
-  const { activeMix, setMixVolume, setIsPlaying, setIsEntered, setCurrentScene } = useAppStore();
+  const { activeMix, setMixVolume, setIsPlaying, setIsEntered, setCurrentScene,getShareUrl } = useAppStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -21,7 +21,8 @@ export default function SoundsPage({ params }: { params: Promise<{ lang: Languag
     setIsEntered(true);
     setIsPlaying(true);
     setCurrentScene('custom');
-    router.push(`/${lang}/play`);
+    const shareUrl = getShareUrl();
+    router.push(shareUrl);
   };
 
   const categories = ['all', ...Array.from(new Set(SOUND_ELEMENTS.map(e => e.category)))];

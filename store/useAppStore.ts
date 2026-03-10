@@ -26,7 +26,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   setCurrentScene: (sceneId) => {
     const scene = SCENES.find(s => s.id === sceneId);
     if (scene) {
-      set({ currentScene: sceneId, activeMix: { ...scene.defaultMix } });
+      set({ currentScene: sceneId, activeMix: scene.id === 'custom' ? { ...get().activeMix } : { ...scene.defaultMix } });
     }
   },
   isPlaying: false,
@@ -61,7 +61,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     const state = get();
     const encoded = btoa(JSON.stringify(state.activeMix));
     if (typeof window !== 'undefined') {
-      return `${window.location.origin}?mix=${encoded}`;
+      return `${window.location.origin}/play?mix=${encoded}`;
     }
     return '';
   }
